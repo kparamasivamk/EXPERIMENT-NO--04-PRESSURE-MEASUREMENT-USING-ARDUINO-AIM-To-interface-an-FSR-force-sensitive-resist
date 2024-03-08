@@ -1,9 +1,9 @@
 # EXPERIMENT-NO--03-PRESSURE-MEASUREMENT-USING-ARDUINO-AIM-To-interface-an-FSR-force-sensitive-resistor
 
-# DATE :
-# NAME :
-# ROLLNUMBER :
-# DEPARTMENT
+# DATE : 08\03\2024
+# NAME : PARAMASIVAM K
+# ROLLNUMBER : 212221080054
+# DEPARTMENT : Mechanical
 ## AIM: 
 To interface an FSR(force sensitive resistor) and scale the output voltage obtained to pressure applied 
  
@@ -63,7 +63,13 @@ The easiest way to measure a resistive sensor is to connect one end to power and
 
 ### FIGURE-03 CIRCUIT DIAGRAM
 
+### ON
 
+![Screenshot (26)](https://github.com/kparamasivamk/EXPERIMENT-NO--04-PRESSURE-MEASUREMENT-USING-ARDUINO-AIM-To-interface-an-FSR-force-sensitive-resist/assets/161025390/3043f407-84f6-4d39-854f-95658009c54b)
+
+### OFF
+
+![Screenshot (25)](https://github.com/kparamasivamk/EXPERIMENT-NO--04-PRESSURE-MEASUREMENT-USING-ARDUINO-AIM-To-interface-an-FSR-force-sensitive-resist/assets/161025390/a5a5cd75-cfd8-4384-bf7c-192e4974a660)
 
 ### PROCEDURE:
 1.	Connect the circuit as per the circuit diagram 
@@ -79,29 +85,49 @@ The easiest way to measure a resistive sensor is to connect one end to power and
 
 
 ### PROGRAM 
- *your roll no 
- * your name 
- * department and year 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
-
-![image](https://user-images.githubusercontent.com/36288975/188804653-a3154e8e-2655-46f2-9dcd-f425dd1ba109.png)
-
+ *your roll no :212221080054
+ * your name :PARAMASIVAM K
+ * department and year :MECHANICAL\3RD YEAR
+```
+ int LED=7;
+int FSR;
+void setup()
+{
+  pinMode(LED, OUTPUT);
+  Serial.begin(9600);
+}
+void loop()
+{
+  FSR=analogRead(A0);
+  Serial.print("Raw value=");
+  Serial.println(FSR);
+  delay(500);
+  int m;
+  m=map(FSR,0,159,0,10);
+  Serial.print("Mapped value=");
+  Serial.println(m);
+  if(FSR>50)
+  {
+    digitalWrite(LED,LOW);
+    delay(500);
+    digitalWrite(LED,HIGH);
+    delay(500);
+  }
+}
+```
 
 ### TABLE -02 standard deviation table 
+
+![Screenshot 1](https://github.com/kparamasivamk/EXPERIMENT-NO--04-PRESSURE-MEASUREMENT-USING-ARDUINO-AIM-To-interface-an-FSR-force-sensitive-resist/assets/161025390/75b1ae17-cc63-4221-9010-6066cf642819)
+
+### GRAPH
+
+![Screenshot ](https://github.com/kparamasivamk/EXPERIMENT-NO--04-PRESSURE-MEASUREMENT-USING-ARDUINO-AIM-To-interface-an-FSR-force-sensitive-resist/assets/161025390/d09b9ace-0af8-45fb-954c-cdc38c84c96d)
+
+### VALUES
+
+![Screenshot 2024-03-08 110550](https://github.com/kparamasivamk/EXPERIMENT-NO--04-PRESSURE-MEASUREMENT-USING-ARDUINO-AIM-To-interface-an-FSR-force-sensitive-resist/assets/161025390/0c7ef7af-1a62-46ed-ab4f-eb6eb25d4489)
+
 ### Population Standard Deviation
 The population standard deviation, the standard definition of σ, is used when an entire population can be measured, and is the square root of the variance of a given data set. In cases where every member of a population can be sampled, the following equation can be used to find the standard deviation of the entire population:
 
@@ -117,19 +143,6 @@ For those unfamiliar with summation notation, the equation above may seem daunti
 EX:           μ = (1+3+4+7+8) / 5 = 4.6        
 σ = √[(1 - 4.6)2 + (3 - 4.6)2 + ... + (8 - 4.6)2)]/5
 σ = √(12.96 + 2.56 + 0.36 + 5.76 + 11.56)/5 = 2.577
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 ### RESULTS : Arduino uno is interfaced with FSR and output values are indicated on a graph.
